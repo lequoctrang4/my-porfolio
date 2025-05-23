@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { Github, Linkedin, Mail, Phone } from "lucide-react"
+import Link from "next/link";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Section } from "@/components/section"
-import { contactInfo } from "@/data/personal-info"
+import { Button } from "@/components/ui/button";
+import { Section } from "@/components/section";
+import { contactInfo } from "@/data/personal-info";
 
 export function ContactSection() {
   return (
@@ -12,8 +12,9 @@ export function ContactSection() {
         <div className="space-y-6">
           <h3 className="text-xl font-medium">Get In Touch</h3>
           <p className="text-muted-foreground">
-            I'm currently available for freelance work or full-time positions. If you have a project that needs some
-            creative work, feel free to contact me.
+            I'm currently available for freelance work or full-time positions.
+            If you have a project that needs some creative work, feel free to
+            contact me.
           </p>
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -38,7 +39,7 @@ export function ContactSection() {
             </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <form className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -80,8 +81,8 @@ export function ContactSection() {
               Send Message
             </Button>
           </form>
-        </div>
+        </div> */}
       </div>
     </Section>
-  )
+  );
 }

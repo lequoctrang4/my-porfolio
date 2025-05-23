@@ -1,4 +1,4 @@
-import type { WorkExperience } from "@/types"
+import type { WorkExperience } from "@/types";
 
 export const workExperiences: WorkExperience[] = [
   {
@@ -62,7 +62,7 @@ export const workExperiences: WorkExperience[] = [
   {
     title: "Frontend Developer",
     company: "Booking Platform – B2B Appointment Management System (Freelance)",
-    period: "2023",
+    period: "2025",
     responsibilities: [
       {
         title: "Project Overview",
@@ -87,7 +87,7 @@ export const workExperiences: WorkExperience[] = [
   {
     title: "Frontend Developer",
     company: "Kfund24 – Freelance Project",
-    period: "2023",
+    period: "2024",
     responsibilities: [
       {
         title: "Responsibilities",
@@ -99,4 +99,4 @@ export const workExperiences: WorkExperience[] = [
       },
     ],
   },
-]
+];
