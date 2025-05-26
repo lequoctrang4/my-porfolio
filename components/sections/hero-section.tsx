@@ -59,11 +59,11 @@ export function HeroSection() {
         </motion.p>
         <div className="flex gap-4 pt-4">
           <Button onClick={handleContactClick}>Contact Me</Button>
-          <Button variant="outline" asChild>
+          {/* <Button variant="outline" asChild>
             <a href="/resume.pdf" download="Le_Quoc_Trang_CV.pdf">
               <Download className="mr-2 h-4 w-4" /> Download CV
             </a>
-          </Button>
+          </Button> */}
         </div>
       </div>
       <motion.div
