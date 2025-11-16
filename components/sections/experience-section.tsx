@@ -1,6 +1,13 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Section } from "@/components/section"
-import { workExperiences } from "@/data/experience"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Section } from "@/components/section";
+import { workExperiences } from "@/data/experience";
+import Image from "next/image";
 
 export function ExperienceSection() {
   return (
@@ -10,11 +17,23 @@ export function ExperienceSection() {
           <Card key={index}>
             <CardHeader>
               <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle>{experience.title}</CardTitle>
-                  <CardDescription>{experience.company}</CardDescription>
+                <div className="flex gap-4 items-center">
+                  <Image
+                    onClick={() => {
+                      window.open(experience.website, "_blank");
+                    }}
+                    src={experience.logo}
+                    alt=""
+                    className="w-12 h-12 rounded-lg hover:cursor-pointer hover:opacity-80"
+                  />
+                  <div>
+                    <CardTitle>{experience.title}</CardTitle>
+                    <CardDescription>{experience.company}</CardDescription>
+                  </div>
                 </div>
-                <div className="text-sm text-muted-foreground">{experience.period}</div>
+                <div className="text-sm text-muted-foreground">
+                  {experience.period}
+                </div>
               </div>
             </CardHeader>
             <CardContent>
@@ -35,5 +54,5 @@ export function ExperienceSection() {
         ))}
       </div>
     </Section>
-  )
+  );
 }

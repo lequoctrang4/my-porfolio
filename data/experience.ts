@@ -2,9 +2,47 @@ import type { WorkExperience } from "@/types";
 
 export const workExperiences: WorkExperience[] = [
   {
+    title: "Mobile App Developer",
+    logo: require("../public/btaskee-logo.png"),
+    company: "bTaskee company limited",
+    website: "https://www.btaskee.com/",
+    period: "Jul 2025 - Present",
+    responsibilities: [
+      {
+        title: "React Native Developer",
+        items: [
+          "Migrating the legacy bTaskee mobile application into a new Super App using re.pack architecture & Module Federation",
+          "Managing app versions across environments (dev, staging, production)",
+          "Managing and maintaining the remote module system in the Super App architecture",
+          "Fixing bugs and handling crashes to improve app stability",
+          "Integrating various third-party SDKs",
+          "Implementing WebSocket for realtime functionalities",
+          "Implementing authentication using Ory Kratos",
+          "Integrating social login methods",
+          "Integrating AI Agent into the mobile application",
+          "Developing and integrating voice chat features",
+          "Developing and integrating voice call features",
+        ],
+      },
+      {
+        title: "Key Achievements",
+        items: [
+          "Successfully migrated the legacy application into a scalable Super App architecture",
+          "Stabilized and ensured smooth operation of the remote module system",
+          "Reduced crash rates through proactive bug fixing and crash handling",
+          "Unified authentication flow by integrating Ory Kratos and social login",
+          "Integrated AI Agent into the mobile application",
+          "Delivered voice chat and voice call functionalities into the app",
+        ],
+      },
+    ],
+  },
+  {
     title: "Mobile App / Fullstack Developer",
-    company: "UrBox – Digital Rewards & Loyalty Solution",
-    period: "Jul 2024 - Present",
+    logo: require("../public/urbox-logo.png"),
+    website: "https://urbox.vn/",
+    company: "UrBox - Digital Rewards & Loyalty Solution",
+    period: "Jul 2024 - Jul 2025",
     responsibilities: [
       {
         title: "React Native Developer",
@@ -44,7 +82,9 @@ export const workExperiences: WorkExperience[] = [
   },
   {
     title: "Full Stack Developer",
+    logo: require("../public/casso-logo.png"),
     company: "Casso",
+    website: "https://casso.vn/",
     period: "Jun 2023 - May 2024",
     responsibilities: [
       {
@@ -55,46 +95,6 @@ export const workExperiences: WorkExperience[] = [
           "Developed demo checkout applications with React Native and Flutter for customers",
           "Worked with technologies including Express.js, Prisma, MySQL, and Socket.io",
           "Collaborated with cross-functional teams to deliver high-quality software solutions",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Frontend Developer",
-    company: "Booking Platform – B2B Appointment Management System (Freelance)",
-    period: "2025",
-    responsibilities: [
-      {
-        title: "Project Overview",
-        items: [
-          "Developed a B2B appointment booking platform for beauty services (salons, spas) with two integrated web applications",
-          "Worked in a team of 3 developers to deliver a comprehensive booking solution",
-          "Built with Next.js, React.js, React Query, Zustand, TailwindCSS, SCSS, and MUI",
-        ],
-      },
-      {
-        title: "Key Contributions",
-        items: [
-          "Developed the entire frontend for the Client App (booking.minno.vn)",
-          "Contributed to key features in the Manager App including appointment creation, customer management, and authentication",
-          "Implemented multi-language support using i18n",
-          "Created responsive interfaces optimized for all devices",
-          "Collaborated with backend and UI teams to ensure seamless user experience",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Frontend Developer",
-    company: "Kfund24 – Freelance Project",
-    period: "2024",
-    responsibilities: [
-      {
-        title: "Responsibilities",
-        items: [
-          "Built a promotional website for a financial program targeting Korean SMEs using ReactJS and SCSS",
-          "Optimized responsive UI and implemented frontend logic using React hooks and state management",
-          "Integrated APIs and optimized performance for both mobile and desktop displays",
         ],
       },
     ],
