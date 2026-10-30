@@ -1,61 +1,35 @@
-"use client"
+"use client";
 
-import { ArrowUpRight } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { ScrollLink } from "@/components/scroll-link"
+const navigation = [
+  ["About", "about"], ["Work", "case-studies"],
+  ["Experience", "experience"], ["Capabilities", "skills"], ["Contact", "contact"],
+];
 
 export function Header() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const handleHireMeClick = () => {
-    if (mounted) {
-      const contactSection = document.getElementById("contact")
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" })
-      }
-    }
-  }
-
+  const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="font-bold text-xl">LQT</div>
-        <nav className="hidden md:flex items-center gap-6">
-          <ScrollLink href="#about" className="text-sm font-medium hover:underline underline-offset-4">
-            About
-          </ScrollLink>
-          <ScrollLink href="#experience" className="text-sm font-medium hover:underline underline-offset-4">
-            Experience
-          </ScrollLink>
-          <ScrollLink href="#skills" className="text-sm font-medium hover:underline underline-offset-4">
-            Skills
-          </ScrollLink>
-          <ScrollLink href="#case-studies" className="text-sm font-medium hover:underline underline-offset-4">
-            Case Studies
-          </ScrollLink>
-          <ScrollLink href="#blog" className="text-sm font-medium hover:underline underline-offset-4">
-            Blog
-          </ScrollLink>
-          <ScrollLink href="#contact" className="text-sm font-medium hover:underline underline-offset-4">
-            Contact
-          </ScrollLink>
+    <header className="site-header sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
+      <div className="container flex h-20 items-center justify-between gap-4">
+        <a href="#hero" className="wordmark" aria-label="Lê Quốc Trạng, back to top">lqt<span>®</span></a>
+        <nav className="hidden lg:flex items-center gap-7" aria-label="Main navigation">
+          {navigation.map(([label, id]) => <a key={id} href={`#${id}`} className="text-sm hover:text-primary">{label}</a>)}
         </nav>
-        <div className="flex items-center gap-4">
-          <div className="relative z-10">
-            <ThemeToggle />
-          </div>
-          <Button onClick={handleHireMeClick}>
-            Hire Me <ArrowUpRight className="ml-2 h-4 w-4" />
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Button asChild className="hidden sm:inline-flex"><a href="#contact">Let’s talk <ArrowUpRight className="ml-2 h-4 w-4" /></a></Button>
+          <Button variant="outline" size="icon" className="lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
+      {open && <nav id="mobile-nav" aria-label="Mobile navigation" className="container flex flex-col gap-4 border-t py-5 lg:hidden">
+        {navigation.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>{label}</a>)}
+      </nav>}
     </header>
-  )
+  );
 }

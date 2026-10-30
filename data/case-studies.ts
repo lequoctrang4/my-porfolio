@@ -2,6 +2,48 @@ import type { CaseStudy } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "bookwise",
+    title: "BookWise — Reading & Audio Experiences",
+    client: "BookWise",
+    description: "A book-summary product spanning a React Native / Expo app and a Next.js web application, with reading, audio narration, stories and subscription flows.",
+    image: "",
+    technologies: ["React Native", "Expo", "Next.js", "Firebase", "RevenueCat", "TanStack Query"],
+    outcomes: [
+      "Reading and listening flows with progress tracking and persistent client state",
+      "Firebase authentication, analytics and app service integrations",
+      "Subscription and paywall flows with RevenueCat",
+      "Shared Maestro flows for mobile UI and analytics-event checks",
+    ],
+  },
+  {
+    id: "bookwise-native",
+    title: "BookWise — Native iOS & Android Migration",
+    client: "BookWise · In development",
+    description: "AI-assisted native development in Swift and Kotlin, translating React Native product behavior into modular iOS and Android implementations. Migration and parity verification remain in progress.",
+    image: "",
+    technologies: ["Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "RevenueCat", "Maestro"],
+    outcomes: [
+      "Native feature modules for reading, playback, onboarding and payment",
+      "Subscription state and paywall implementations using platform-specific UI",
+      "Shared test IDs and analytics contracts across React Native and native apps",
+      "Explicit tracking of behavior parity, migration risks and verification gaps",
+    ],
+  },
+  {
+    id: "ai-pet",
+    title: "AI Pet — From Drawing to Digital Companion",
+    client: "AI Pet",
+    description: "An AI-powered pet app that connects a drawing-upload and generation pipeline to an animated companion, with care, growth and progress managed on the device.",
+    image: "",
+    technologies: ["React Native", "Expo", "TypeScript", "TanStack Query", "Zustand", "MMKV", "Vitest"],
+    outcomes: [
+      "Creation workflow for uploading drawings, enhancing images and retrieving animation clips",
+      "Resumable creation and persistent request keys to avoid duplicate operations",
+      "Pure TypeScript rules for pet care, growth and evolution readiness",
+      "Separation of server-owned pet assets from locally persisted progress",
+    ],
+  },
+  {
     id: "urbox-plus",
     title: "UrBox Plus Membership System",
     client: "UrBox",

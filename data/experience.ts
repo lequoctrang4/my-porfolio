@@ -1,12 +1,36 @@
+import btaskeeLogo from "@/public/btaskee-logo.png";
+import urboxLogo from "@/public/urbox-logo.png";
+import cassoLogo from "@/public/casso-logo.png";
 import type { WorkExperience } from "@/types";
 
 export const workExperiences: WorkExperience[] = [
   {
+    id: "co-ba-sai-gon",
+    current: true,
+    title: "App & Web Development",
+    company: "Cô Ba Sài Gòn",
+    period: "Mar 2026 - Present",
+    responsibilities: [
+      {
+        title: "Apps, web & integrations",
+        items: [
+          "Working on BookWise across React Native / Expo, web and native iOS / Android implementations",
+          "Developing AI Pet, connecting AI-generated pet assets with on-device care and progress",
+          "Using AI-assisted vibe coding across app, web and native code",
+          "Integrating Firebase SDKs into applications",
+          "Working on in-app purchase flows and RevenueCat integrations",
+          "Maintaining shared Maestro UI flows and analytics-event checks for BookWise",
+        ],
+      },
+    ],
+  },
+  {
+    id: "btaskee",
     title: "Mobile App Developer",
-    logo: require("../public/btaskee-logo.png"),
+    logo: btaskeeLogo,
     company: "bTaskee company limited",
     website: "https://www.btaskee.com/",
-    period: "Jul 2025 - Present",
+    period: "Jul 2025 · Previous role",
     responsibilities: [
       {
         title: "React Native Developer",
@@ -38,8 +62,9 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
+    id: "urbox",
     title: "Mobile App / Fullstack Developer",
-    logo: require("../public/urbox-logo.png"),
+    logo: urboxLogo,
     website: "https://urbox.vn/",
     company: "UrBox - Digital Rewards & Loyalty Solution",
     period: "Jul 2024 - Jul 2025",
@@ -81,8 +106,9 @@ export const workExperiences: WorkExperience[] = [
     ],
   },
   {
+    id: "casso",
     title: "Full Stack Developer",
-    logo: require("../public/casso-logo.png"),
+    logo: cassoLogo,
     company: "Casso",
     website: "https://casso.vn/",
     period: "Jun 2023 - May 2024",

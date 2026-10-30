@@ -1,86 +1,72 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Download } from "lucide-react";
-import { motion } from "framer-motion";
+import { assetPath } from "@/lib/assets";
+import { Github, Linkedin } from "@/components/brand-icons";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { personalInfo, contactInfo } from "@/data/personal-info";
+import type { Design } from "@/lib/designs";
 
-import { Button } from "@/components/ui/button";
-import { personalInfo } from "@/data/personal-info";
-
-export function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleContactClick = () => {
-    if (mounted) {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
+function PixelScene() {
   return (
-    <motion.section
-      className="py-12 md:py-20 flex flex-col md:flex-row items-center gap-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      id="hero"
-    >
-      <div className="flex-1 space-y-4">
-        <motion.h1
-          className="text-4xl md:text-5xl font-bold tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          {personalInfo.name}
-        </motion.h1>
-        <motion.h2
-          className="text-2xl md:text-3xl text-muted-foreground"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          {personalInfo.title}
-        </motion.h2>
-        <motion.p
-          className="text-lg text-muted-foreground max-w-md"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          {personalInfo.summary}
-        </motion.p>
-        <div className="flex gap-4 pt-4">
-          <Button onClick={handleContactClick}>Contact Me</Button>
-          {/* <Button variant="outline" asChild>
-            <a href="/resume.pdf" download="Le_Quoc_Trang_CV.pdf">
-              <Download className="mr-2 h-4 w-4" /> Download CV
-            </a>
-          </Button> */}
-        </div>
-      </div>
-      <motion.div
-        className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
+    <div className="pixel-scene" aria-label="Pixel developer character">
+      <div className="scene-topline"><span>PLAYER_01</span><span>♥ ♥ ♥</span></div>
+      <div className="pixel-avatar-stage">
         <Image
-          src="https://fashionfushion.s3.ap-southeast-1.amazonaws.com/IMG_2108+copy.jpg"
-          alt={personalInfo.name}
+          src={assetPath("/avatars/developer-pixel.png")}
+          alt="Pixel-art developer with dark hair and lavender and lime accents"
           fill
-          className="object-cover"
+          sizes="(max-width: 640px) 90vw, 480px"
+          className="pixel-avatar"
           priority
-          unoptimized
         />
-      </motion.div>
-    </motion.section>
+      </div>
+      <div className="scene-bottomline"><span>CREATIVE MODE</span><span>∞</span></div>
+    </div>
+  );
+}
+
+function TerminalPanel() {
+  return (
+    <div className="terminal-panel">
+      <div className="terminal-title"><span className="window-dots" aria-hidden="true">● ● ●</span><span>trang@portfolio: ~</span><span>zsh</span></div>
+      <div className="terminal-output">
+        <p><span className="prompt">❯</span> whoami</p>
+        <p className="terminal-answer">{personalInfo.name}<br />{personalInfo.title}</p>
+        <p><span className="prompt">❯</span> cat stack.json</p>
+        <pre>{'{\n  "frontend": ["React", "Next.js"],\n  "mobile": "React Native",\n  "backend": ["Node.js", "NestJS"],\n  "language": "TypeScript"\n}'}</pre>
+        <p><span className="prompt">❯</span> <span className="terminal-cursor" aria-hidden="true">▊</span></p>
+      </div>
+    </div>
+  );
+}
+
+function StudioPanel() {
+  return (
+    <div className="studio-panel">
+      <div className="studio-panel-top"><span>FROM IDEA TO INTERFACE</span><span>↗</span></div>
+      <div className="studio-symbol" aria-hidden="true"><span>✳</span></div>
+      <div className="studio-panel-bottom"><span>Web.<br />Mobile.<br />Everything in between.</span><span className="small-orbit" aria-hidden="true">↗</span></div>
+    </div>
+  );
+}
+
+export function HeroSection({ design = "studio" }: { design?: Design }) {
+  const pixel = design === "pixel";
+  const terminal = design === "terminal";
+  return (
+    <section id="hero" className="portfolio-hero scroll-mt-24">
+      <div className="hero-copy">
+        <div className="hero-eyebrow"><span className="status-dot" />{pixel ? "HELLO, WORLD! / PRESS START" : terminal ? "~/portfolio • welcome" : "DEVELOPER & PROBLEM SOLVER"}</div>
+        <p className="hero-intro">Hi, I’m {personalInfo.name}.</p>
+        <h1>{pixel ? <>I build things.<br /><span>Pixel by pixel.</span></> : terminal ? <>Turning coffee<br />into <span>code.</span></> : <>Thoughtful code.<br /><span>Real impact.</span></>}</h1>
+        <p className="hero-summary">{personalInfo.summary}</p>
+        <div className="hero-actions">
+          <a href="#case-studies" className="hero-primary">{pixel ? "EXPLORE MY QUESTS" : terminal ? "./explore-work" : "Explore my work"}<ArrowUpRight size={18} /></a>
+          <a href={contactInfo.github} target="_blank" rel="noopener noreferrer" className="hero-secondary"><Github size={18} />GitHub</a>
+        </div>
+        <div className="hero-location"><span>BASED IN HO CHI MINH CITY, VN</span><span>REACT · NEXT.JS · REACT NATIVE</span></div>
+      </div>
+      {pixel ? <PixelScene /> : terminal ? <TerminalPanel /> : <StudioPanel />}
+      <a className="hero-scroll" href="#about"><ArrowDown size={14} />{pixel ? "SCROLL TO CONTINUE" : "A little more about me"}</a>
+    </section>
   );
 }

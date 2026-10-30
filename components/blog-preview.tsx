@@ -1,3 +1,4 @@
+import { assetPath } from "@/lib/assets"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Calendar, Clock } from "lucide-react"
@@ -12,7 +13,7 @@ export function BlogPreview() {
         {blogPosts.map((post) => (
           <Card key={post.id} className="overflow-hidden flex flex-col">
             <div className="relative h-48">
-              <Image src={post.coverImage || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+              <Image src={assetPath(post.coverImage || "/placeholder.svg")} alt={post.title} fill className="object-cover" />
             </div>
             <CardHeader>
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">

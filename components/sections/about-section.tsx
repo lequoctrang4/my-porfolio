@@ -22,11 +22,11 @@ export function AboutSection() {
           </p>
         </div>
         <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {Object.entries(personalInfo.details).map(([key, value]) => (
               <div key={key}>
                 <h3 className="font-medium">{key}</h3>
-                <p className="text-muted-foreground">{value}</p>
+                <p className="text-muted-foreground break-words">{value}</p>
               </div>
             ))}
           </div>

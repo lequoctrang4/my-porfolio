@@ -1,76 +1,41 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowUpRight, Blocks, Braces, Smartphone, Sparkles } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { Section } from "@/components/section";
-import { skills } from "@/data/skills";
+import { capabilities, workingPrinciples } from "@/data/capabilities";
 
-interface SkillCardProps {
-  name: string;
-  level: string;
-}
-
-function SkillCard({ name, level }: SkillCardProps) {
-  return (
-    <Card>
-      <CardContent className="p-4">
-        <div className="font-medium">{name}</div>
-        <div className="text-sm text-muted-foreground">{level}</div>
-      </CardContent>
-    </Card>
-  );
-}
+const icons = { mobile: Smartphone, product: Blocks, systems: Braces, ai: Sparkles };
 
 export function SkillsSection() {
-  // Group skills by level for the technical skills tab
-  const technicalSkills = skills.reduce<Record<string, string[]>>(
-    (acc, skill) => {
-      if (!acc[skill.level]) {
-        acc[skill.level] = [];
-      }
-      acc[skill.level].push(skill.name);
-      return acc;
-    },
-    {}
-  );
-
-  // Soft skills
-  const softSkills = {
-    Advanced: [
-      "Problem Solving",
-      "Team Working",
-      "Time Management",
-      "Communication",
-      "AI Tools for Coding",
-      "Independent Research",
-    ],
-    Intermediate: ["Project Management"],
-  };
-
   return (
-    <Section id="skills" title="Skills">
-      <Tabs defaultValue="technical">
-        <TabsList className="mb-6">
-          <TabsTrigger value="technical">Technical Skills</TabsTrigger>
-          <TabsTrigger value="soft">Soft Skills</TabsTrigger>
-        </TabsList>
-        <TabsContent value="technical">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Object.entries(technicalSkills).flatMap(([level, skillNames]) =>
-              skillNames.map((name) => (
-                <SkillCard key={name} name={name} level={level} />
-              ))
-            )}
-          </div>
-        </TabsContent>
-        <TabsContent value="soft">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Object.entries(softSkills).flatMap(([level, skillNames]) =>
-              skillNames.map((name) => (
-                <SkillCard key={name} name={name} level={level} />
-              ))
-            )}
-          </div>
-        </TabsContent>
-      </Tabs>
+    <Section id="skills" title="What I bring">
+      <div className="capabilities-intro">
+        <p className="capabilities-lead">From a product problem<br /><span>to something people can use.</span></p>
+        <p className="capabilities-context">Mobile, web, backend and AI integration — grounded in projects I’ve worked on. Each capability below connects to that work.</p>
+      </div>
+      <div className="capabilities-grid">
+        {capabilities.map((capability, index) => {
+          const Icon = icons[capability.id as keyof typeof icons];
+          return (
+            <Card key={capability.id} className="capability-card">
+              <div className="capability-topline"><Icon size={22} aria-hidden="true" /><span>0{index + 1}</span></div>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+              <ul className="capability-tools" aria-label={`Tools for ${capability.title}`}>
+                {capability.tools.map((tool) => <li key={tool}>{tool}</li>)}
+              </ul>
+              <div className="capability-evidence-links">
+                {[capability.evidence, capability.additionalEvidence].filter((item) => item !== undefined).map((evidence) => (
+                  <a key={evidence.href} href={evidence.href} className="capability-evidence">{evidence.label}<ArrowUpRight size={15} aria-hidden="true" /></a>
+                ))}
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+      <div className="working-principles" aria-label="How I work">
+        <span className="principles-label">HOW I WORK</span>
+        {workingPrinciples.map((principle) => <div key={principle.title}><h3>{principle.title}</h3><p>{principle.description}</p></div>)}
+      </div>
     </Section>
   );
 }

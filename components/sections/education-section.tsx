@@ -8,7 +8,7 @@ export function EducationSection() {
       {education.map((edu, index) => (
         <Card key={index}>
           <CardHeader>
-            <div className="flex justify-between items-start">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
               <div>
                 <CardTitle>{edu.degree}</CardTitle>
                 <CardDescription>{edu.institution}</CardDescription>
@@ -28,7 +28,7 @@ export function EducationSection() {
       {certificates.map((cert, index) => (
         <Card key={index}>
           <CardHeader>
-            <div className="flex justify-between items-start">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
               <div>
                 <CardTitle>{cert.name}</CardTitle>
                 {cert.description && <CardDescription>{cert.description}</CardDescription>}

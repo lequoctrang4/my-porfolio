@@ -1,5 +1,6 @@
+import { Github, Linkedin } from "@/components/brand-icons";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/section";
@@ -19,21 +20,21 @@ export function ContactSection() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-primary" />
-              <span>{contactInfo.email}</span>
+              <a href={`mailto:${contactInfo.email}`} className="break-all hover:underline">{contactInfo.email}</a>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-primary" />
-              <span>{contactInfo.phone}</span>
+              <a href="tel:+84399609015" className="break-all hover:underline">{contactInfo.phone}</a>
             </div>
             <div className="flex items-center gap-3">
               <Linkedin className="h-5 w-5 text-primary" />
-              <Link href={contactInfo.linkedin} className="hover:underline">
+              <Link href={contactInfo.linkedin} className="break-all hover:underline">
                 linkedin.com/in/trang-le-quoc-327268251
               </Link>
             </div>
             <div className="flex items-center gap-3">
               <Github className="h-5 w-5 text-primary" />
-              <Link href={contactInfo.github} className="hover:underline">
+              <Link href={contactInfo.github} className="break-all hover:underline">
                 github.com/lequoctrang4
               </Link>
             </div>

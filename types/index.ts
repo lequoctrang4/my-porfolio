@@ -9,12 +9,14 @@ export type Skill = {
 };
 
 export type WorkExperience = {
+  id: string;
+  current?: boolean;
   title: string;
   company: string;
   period: string;
-  logo: string | StaticImport;
+  logo?: string | StaticImport;
   description?: string;
-  website: string;
+  website?: string;
   responsibilities: {
     title: string;
     items: string[];

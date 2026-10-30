@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/assets";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -18,15 +19,20 @@ export function CaseStudyPreview() {
   return (
     <div className="space-y-8">
       {caseStudies.map((study) => (
-        <Card key={study.id} className="overflow-hidden">
+        <Card key={study.id} id={`project-${study.id}`} className="overflow-hidden scroll-mt-24">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="relative h-64 md:h-full bg-[#EAEAEA]">
-              <Image
-                src={study.image || "/placeholder.svg"}
+              {study.image ? <Image
+                src={assetPath(study.image)}
                 alt={study.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
-              />
+              /> : <div className="project-type-cover">
+                <span className="project-cover-label">{study.id === "ai-pet" ? "AI PRODUCT" : "PRODUCT ENGINEERING"}</span>
+                <span className="project-cover-name">{study.id === "ai-pet" ? "AI Pet" : "BookWise"}</span>
+                <span className="project-cover-platform">{study.id === "bookwise-native" ? "SWIFT / KOTLIN" : study.id === "ai-pet" ? "DRAW → GENERATE → CARE" : "READ / LISTEN / DISCOVER"}</span>
+              </div>}
             </div>
             <div className="flex flex-col p-6">
               <CardHeader className="p-0 pb-4">
@@ -41,7 +47,7 @@ export function CaseStudyPreview() {
               <CardContent className="p-0 py-4 flex-grow">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium mb-2">Key Outcomes</h4>
+                    <h4 className="font-medium mb-2">Project highlights</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       {study.outcomes.map((outcome, index) => (
                         <li key={index} className="text-sm">
@@ -66,13 +72,13 @@ export function CaseStudyPreview() {
                 </div>
               </CardContent>
               <CardFooter className="p-0 pt-4">
-                <Button
-                  variant={"link"}
-                  onClick={() => window.open(study.link, "_blank")}
-                  className="text-primary flex items-center hover:underline"
-                >
-                  View Project <ArrowUpRight className="ml-1 h-4 w-4" />
-                </Button>
+                {study.link && study.link !== "#" ? (
+                  <Button variant="link" asChild className="px-0 text-primary">
+                    <a href={study.link} target="_blank" rel="noopener noreferrer">
+                      View Project <ArrowUpRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </Button>
+                ) : <span className="text-sm text-muted-foreground">Project overview</span>}
               </CardFooter>
             </div>
           </div>
